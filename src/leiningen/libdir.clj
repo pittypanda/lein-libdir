@@ -16,7 +16,7 @@
 
 (defn copy-deps
   [project target-dir sourceify?]
-  (let [project (project/unmerge-profiles project [:dev :provided])
+  (let [project (project/unmerge-profiles project [:dev :provided :base])
         deps (->> (classpath/resolve-dependencies :dependencies project)
                   (filter #(.exists %)))]
     (.mkdirs target-dir)
